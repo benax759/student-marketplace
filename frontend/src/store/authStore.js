@@ -52,7 +52,7 @@ const useAuthStore = create((set, get) => ({
       const updated = data.user
       localStorage.setItem('user', JSON.stringify(updated))
       set({ user: updated })
-    } catch (_) {}
+    } catch (_) { /* silently fail if not authenticated */ }
   },
 }))
 

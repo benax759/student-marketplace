@@ -30,17 +30,17 @@ export default function ListingCard({ listing, compact = false }) {
     }
   }
 
-  const thumbnail = listing.images?.[0]?.url || `https://placehold.co/400x300/e2e8f0/94a3b8?text=${encodeURIComponent(listing.title)}`
+  const thumbnail = listing.images?.[0]?.url || `https://placehold.co/400x300/ede9fe/7C5DFA?text=${encodeURIComponent(listing.title)}`
 
   return (
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className={`glass-card glass-card-hover group relative overflow-hidden border-none ${compact ? '' : ''}`}
+      className="card card-hover group relative overflow-hidden border-none"
     >
       <Link to={`/listing/${listing._id}`} className="block">
         {/* Image */}
-        <div className="img-zoom-container relative aspect-[4/3] bg-slate-100 dark:bg-slate-800 rounded-t-2xl overflow-hidden">
+        <div className="img-zoom-container relative aspect-[4/3] bg-brand-50 dark:bg-brand-950/30 rounded-t-3xl overflow-hidden">
           <img
             src={thumbnail}
             alt={listing.title}
@@ -49,15 +49,15 @@ export default function ListingCard({ listing, compact = false }) {
           />
 
           {/* Badges overlay */}
-          <div className="absolute top-2.5 left-2.5 flex gap-1.5 flex-wrap">
+          <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
             {listing.isFeatured && (
-              <span className="badge bg-brand-500 text-white text-[10px]">⭐ Featured</span>
+              <span className="badge bg-brand-500 text-white text-[10px] shadow-button">✨ Featured</span>
             )}
             {listing.status === 'sold' && (
-              <span className="badge bg-slate-700 text-white text-[10px]">Sold</span>
+              <span className="badge bg-slate-700/90 backdrop-blur-sm text-white text-[10px]">Sold</span>
             )}
             {listing.status === 'reserved' && (
-              <span className="badge bg-yellow-500 text-white text-[10px]">Reserved</span>
+              <span className="badge bg-yellow-500/90 backdrop-blur-sm text-white text-[10px]">Reserved</span>
             )}
           </div>
 
@@ -65,37 +65,37 @@ export default function ListingCard({ listing, compact = false }) {
           <button
             onClick={handleWishlist}
             disabled={loadingWishlist}
-            className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full flex items-center justify-center 
-              bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow-md
+            className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center 
+              bg-white/90 dark:bg-[#1A1433]/90 backdrop-blur-sm shadow-md
               transition-all duration-200 hover:scale-110 active:scale-95
               opacity-0 group-hover:opacity-100`}
           >
             {wishlisted
-              ? <HiHeart className="w-4 h-4 text-red-500" />
-              : <HiOutlineHeart className="w-4 h-4 text-slate-500" />
+              ? <HiHeart className="w-4.5 h-4.5 text-red-500" />
+              : <HiOutlineHeart className="w-4.5 h-4.5 text-[var(--text-muted)]" />
             }
           </button>
 
-          {/* Category chip */}
-          <div className="absolute bottom-2.5 left-2.5">
-            <span className="badge bg-black/50 backdrop-blur-sm text-white text-[10px]">
-              {getCategoryIcon(listing.category)} {listing.category}
-            </span>
-          </div>
+          {/* Condition badge */}
+          {listing.condition && (
+            <div className="absolute bottom-3 left-3">
+              <span className={`badge text-[10px] backdrop-blur-sm ${getConditionColor(listing.condition)}`}>
+                {listing.condition}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Content */}
         <div className="p-4">
-          <div className="flex items-start justify-between gap-2 mb-1">
-            <h3 className="font-semibold text-[var(--text-primary)] text-sm leading-snug line-clamp-2 flex-1">
-              {listing.title}
-            </h3>
-          </div>
+          <h3 className="font-semibold text-[var(--text-primary)] text-sm leading-snug line-clamp-2 mb-2">
+            {listing.title}
+          </h3>
 
           <div className="flex items-center gap-2 mb-3">
             <span className="text-xl font-bold text-brand-500">{formatPrice(listing.price)}</span>
-            <span className={`badge text-[10px] ${getConditionColor(listing.condition)}`}>
-              {listing.condition}
+            <span className="badge bg-brand-100 dark:bg-brand-950/50 text-brand-600 dark:text-brand-400 text-[10px]">
+              {getCategoryIcon(listing.category)} {listing.category}
             </span>
           </div>
 
@@ -103,7 +103,7 @@ export default function ListingCard({ listing, compact = false }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
               {listing.seller?.avatar ? (
-                <img src={listing.seller.avatar} alt="" className="w-5 h-5 rounded-full object-cover" />
+                <img src={listing.seller.avatar} alt="" className="w-5 h-5 rounded-full object-cover ring-1 ring-brand-200" />
               ) : (
                 <div className="w-5 h-5 rounded-full bg-brand-500 flex items-center justify-center text-[9px] text-white font-bold">
                   {listing.seller?.name?.[0]?.toUpperCase()}
@@ -129,7 +129,7 @@ export default function ListingCard({ listing, compact = false }) {
             </div>
           </div>
 
-          <p className="text-[10px] text-[var(--text-muted)] mt-2">{formatDate(listing.createdAt)}</p>
+          <p className="text-[10px] text-[var(--text-muted)] mt-2.5">{formatDate(listing.createdAt)}</p>
         </div>
       </Link>
     </motion.div>

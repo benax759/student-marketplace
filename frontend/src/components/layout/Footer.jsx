@@ -3,12 +3,12 @@ import { HiHeart } from 'react-icons/hi'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] mt-16">
+    <footer className="hidden md:block border-t border-[var(--border-color)] bg-[var(--bg-secondary)] mt-16">
       <div className="page-container py-10">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 bg-brand-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-brand-500 rounded-xl flex items-center justify-center shadow-button">
                 <span className="text-white text-xs font-bold">CC</span>
               </div>
               <span className="font-display font-bold text-[var(--text-primary)]">
@@ -57,7 +57,7 @@ export default function Footer() {
             © 2024 CampusCart. All rights reserved.
           </p>
           <p className="text-xs text-[var(--text-muted)] flex items-center gap-1">
-            Made with <HiHeart className="text-red-400 w-3 h-3" /> for students everywhere
+            Made with <HiHeart className="text-brand-500 w-3 h-3" /> for students everywhere
           </p>
         </div>
       </div>

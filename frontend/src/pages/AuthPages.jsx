@@ -108,7 +108,7 @@ export function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 p-4 bg-[var(--bg-secondary)] rounded-xl text-xs text-[var(--text-muted)]">
+          <div className="mt-6 p-4 bg-brand-50 dark:bg-brand-950/30 rounded-2xl text-xs text-[var(--text-muted)] border border-brand-100 dark:border-brand-900/30">
             <p className="font-semibold text-[var(--text-secondary)] mb-1">Demo credentials</p>
             <p>Email: <span className="font-mono">student@demo.com</span></p>
             <p>Password: <span className="font-mono">password123</span></p>
