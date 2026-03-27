@@ -6,16 +6,16 @@ A full-stack, production-ready marketplace built for students to buy and sell bo
 
 ## 🖥️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, Vite, Tailwind CSS, Framer Motion |
-| Backend | Node.js, Express.js |
-| Database | MongoDB (Mongoose ODM) |
-| Auth | JWT + bcryptjs |
-| Real-time | Socket.IO |
-| Image Uploads | Cloudinary + Multer |
-| State Management | Zustand |
-| Deployment | Vercel (FE) + Render/Railway (BE) + MongoDB Atlas |
+| Layer            | Technology                                        |
+| ---------------- | ------------------------------------------------- |
+| Frontend         | React 18, Vite, Tailwind CSS, Framer Motion       |
+| Backend          | Node.js, Express.js                               |
+| Database         | MongoDB (Mongoose ODM)                            |
+| Auth             | JWT + bcryptjs                                    |
+| Real-time        | Socket.IO                                         |
+| Image Uploads    | Cloudinary + Multer                               |
+| State Management | Zustand                                           |
+| Deployment       | Vercel (FE) + Render/Railway (BE) + MongoDB Atlas |
 
 ---
 
@@ -155,6 +155,7 @@ npx vercel --prod
 ```
 
 **Vercel env vars to set:**
+
 ```
 VITE_API_URL=https://your-backend.onrender.com/api
 VITE_SOCKET_URL=https://your-backend.onrender.com
@@ -187,12 +188,14 @@ railway up
 ## ✨ Features
 
 ### Authentication
+
 - JWT-based login/register
 - Password hashing with bcryptjs
 - Persistent sessions with localStorage
 - Role-based access (user / admin)
 
 ### Listings
+
 - Create, edit, delete listings
 - Up to 5 images per listing (Cloudinary)
 - Category, condition, price, location
@@ -200,6 +203,7 @@ railway up
 - View counter
 
 ### Browse & Search
+
 - Full-text search (MongoDB text index)
 - Filter by category, condition, price range, location
 - Sort: newest, oldest, price asc/desc, most viewed
@@ -207,6 +211,7 @@ railway up
 - URL-synced filters (shareable links)
 
 ### Product Detail
+
 - Image gallery with lightbox zoom
 - Seller profile card with rating
 - Wishlist toggle
@@ -216,26 +221,31 @@ railway up
 - Related listings
 
 ### Real-time Chat
+
 - Socket.IO powered messaging
 - Persistent chat history (MongoDB)
 - Linked to specific listing context
 - Chat list with last message preview
 
 ### Wishlist & Recently Viewed
+
 - Save/unsave items from any card or detail page
 - Up to 10 recently viewed items tracked
 
 ### Ratings & Reviews
+
 - Buyers can rate sellers (1–5 stars + comment)
 - Average rating displayed on profile and listing cards
 
 ### Admin Panel
+
 - Stats overview (users, listings, reports)
 - Manage users (suspend/restore)
 - Manage listings (remove/restore, feature/unfeature)
 - View reported listings
 
 ### UX Extras
+
 - Dark / Light mode toggle (system-aware default)
 - Loading skeletons on all data-heavy pages
 - Toast notifications for all actions
@@ -248,57 +258,63 @@ railway up
 ## 📡 API Reference
 
 ### Auth
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/auth/register` | ❌ | Register new user |
-| POST | `/api/auth/login` | ❌ | Login |
-| GET | `/api/auth/me` | ✅ | Get current user |
+
+| Method | Endpoint             | Auth | Description       |
+| ------ | -------------------- | ---- | ----------------- |
+| POST   | `/api/auth/register` | ❌   | Register new user |
+| POST   | `/api/auth/login`    | ❌   | Login             |
+| GET    | `/api/auth/me`       | ✅   | Get current user  |
 
 ### Listings
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/listings` | ❌ | Browse with filters/pagination |
-| GET | `/api/listings/featured` | ❌ | Get featured listings |
-| GET | `/api/listings/:id` | ❌ | Get listing detail + related |
-| POST | `/api/listings` | ✅ | Create listing (multipart) |
-| PUT | `/api/listings/:id` | ✅ | Update listing |
-| DELETE | `/api/listings/:id` | ✅ | Delete listing |
-| POST | `/api/listings/:id/report` | ✅ | Report listing |
-| GET | `/api/listings/user/:userId` | ❌ | Get user's listings |
+
+| Method | Endpoint                     | Auth | Description                    |
+| ------ | ---------------------------- | ---- | ------------------------------ |
+| GET    | `/api/listings`              | ❌   | Browse with filters/pagination |
+| GET    | `/api/listings/featured`     | ❌   | Get featured listings          |
+| GET    | `/api/listings/:id`          | ❌   | Get listing detail + related   |
+| POST   | `/api/listings`              | ✅   | Create listing (multipart)     |
+| PUT    | `/api/listings/:id`          | ✅   | Update listing                 |
+| DELETE | `/api/listings/:id`          | ✅   | Delete listing                 |
+| POST   | `/api/listings/:id/report`   | ✅   | Report listing                 |
+| GET    | `/api/listings/user/:userId` | ❌   | Get user's listings            |
 
 **GET /api/listings query params:**
+
 ```
 search, category, condition, minPrice, maxPrice, location, sort, page, limit
 ```
 
 ### Users
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/users/:id` | ❌ | Get public profile |
-| PUT | `/api/users/profile/update` | ✅ | Update profile (multipart) |
-| POST | `/api/users/wishlist/:listingId` | ✅ | Toggle wishlist item |
-| GET | `/api/users/wishlist/items` | ✅ | Get wishlist |
-| POST | `/api/users/recently-viewed/:id` | ✅ | Track recently viewed |
-| GET | `/api/users/recently-viewed/items` | ✅ | Get recently viewed |
-| POST | `/api/users/:id/rate` | ✅ | Rate a seller |
+
+| Method | Endpoint                           | Auth | Description                |
+| ------ | ---------------------------------- | ---- | -------------------------- |
+| GET    | `/api/users/:id`                   | ❌   | Get public profile         |
+| PUT    | `/api/users/profile/update`        | ✅   | Update profile (multipart) |
+| POST   | `/api/users/wishlist/:listingId`   | ✅   | Toggle wishlist item       |
+| GET    | `/api/users/wishlist/items`        | ✅   | Get wishlist               |
+| POST   | `/api/users/recently-viewed/:id`   | ✅   | Track recently viewed      |
+| GET    | `/api/users/recently-viewed/items` | ✅   | Get recently viewed        |
+| POST   | `/api/users/:id/rate`              | ✅   | Rate a seller              |
 
 ### Chat
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/chat` | ✅ | Get all user chats |
-| POST | `/api/chat/start` | ✅ | Start or get a chat |
-| GET | `/api/chat/:chatId` | ✅ | Get chat messages |
-| POST | `/api/chat/:chatId/message` | ✅ | Send message |
+
+| Method | Endpoint                    | Auth | Description         |
+| ------ | --------------------------- | ---- | ------------------- |
+| GET    | `/api/chat`                 | ✅   | Get all user chats  |
+| POST   | `/api/chat/start`           | ✅   | Start or get a chat |
+| GET    | `/api/chat/:chatId`         | ✅   | Get chat messages   |
+| POST   | `/api/chat/:chatId/message` | ✅   | Send message        |
 
 ### Admin
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/admin/stats` | ✅ Admin | Dashboard stats |
-| GET | `/api/admin/users` | ✅ Admin | List all users |
-| PUT | `/api/admin/users/:id/toggle` | ✅ Admin | Suspend/activate user |
-| GET | `/api/admin/listings` | ✅ Admin | List all listings |
-| PUT | `/api/admin/listings/:id/toggle` | ✅ Admin | Remove/restore listing |
-| PUT | `/api/admin/listings/:id/feature` | ✅ Admin | Toggle featured |
+
+| Method | Endpoint                          | Auth     | Description            |
+| ------ | --------------------------------- | -------- | ---------------------- |
+| GET    | `/api/admin/stats`                | ✅ Admin | Dashboard stats        |
+| GET    | `/api/admin/users`                | ✅ Admin | List all users         |
+| PUT    | `/api/admin/users/:id/toggle`     | ✅ Admin | Suspend/activate user  |
+| GET    | `/api/admin/listings`             | ✅ Admin | List all listings      |
+| PUT    | `/api/admin/listings/:id/toggle`  | ✅ Admin | Remove/restore listing |
+| PUT    | `/api/admin/listings/:id/feature` | ✅ Admin | Toggle featured        |
 
 ---
 
@@ -328,6 +344,7 @@ node seed.js
 ## 📱 Screenshots
 
 The app includes:
+
 - A hero landing page with animated search
 - Full-featured browse page with sidebar filters
 - Rich product detail page with image gallery
@@ -350,4 +367,10 @@ MIT — feel free to use this as a starting point for your own campus marketplac
 
 ---
 
-Made with ❤️ for students everywhere.
+# Made with ❤️ for students everywhere.
+
+# student-marketplace
+
+Where students buy and sell this and many more
+
+> > > > > > > d245f623663727614c97baeebced2fe1714f313a
