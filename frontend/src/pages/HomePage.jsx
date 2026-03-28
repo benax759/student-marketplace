@@ -47,39 +47,38 @@ export default function HomePage() {
     <div className="min-h-screen">
 
       {/* ── Hero Card ── */}
-      <section className="page-container pt-6 sm:pt-10">
+      <section className="page-container pt-8 sm:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="hero-gradient rounded-3xl sm:rounded-4xl p-8 sm:p-12 md:p-16 relative overflow-hidden"
+          transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+          className="hero-gradient rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-14 md:p-20 relative overflow-hidden shadow-xl"
         >
           {/* Decorative orbs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-20 -right-20 w-60 h-60 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
+            <div className="absolute -top-32 -right-32 w-80 h-80 bg-white/20 rounded-full blur-[80px]" />
+            <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white/20 rounded-full blur-[60px]" />
+            <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-white/10 rounded-full blur-[40px]" />
           </div>
 
-          <div className="relative max-w-xl">
+          <div className="relative max-w-2xl">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider"
+              className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold px-4 py-2 rounded-full mb-8 tracking-wider shadow-sm"
             >
-              <HiOutlineLightningBolt className="w-3.5 h-3.5" />
-              Exclusive Campus Deals
+              <HiOutlineLightningBolt className="w-4 h-4" />
+              EXCLUSIVE CAMPUS DEALS
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight"
             >
-              Elevate your{' '}
-              <br className="hidden sm:block" />
+              Elevate your <br className="hidden sm:block" />
               academic life.
             </motion.h1>
 
@@ -87,7 +86,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-white/80 text-base sm:text-lg mb-8 max-w-md leading-relaxed"
+              className="text-white/90 text-lg sm:text-xl mb-10 max-w-lg leading-relaxed font-medium"
             >
               The premier boutique marketplace for students to curate, trade, and discover premium campus essentials.
             </motion.p>
@@ -99,10 +98,10 @@ export default function HomePage() {
             >
               <Link
                 to="/browse"
-                className="btn-white inline-flex items-center gap-2 text-base"
+                className="btn-white inline-flex items-center gap-2 text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all"
               >
                 Start Browsing
-                <HiOutlineArrowRight className="w-4 h-4" />
+                <HiOutlineArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
           </div>
@@ -110,21 +109,21 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats ── */}
-      <section className="page-container py-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      <section className="page-container py-12 sm:py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 + i * 0.1 }}
-              className="card p-4 sm:p-5 text-center border-none shadow-card"
+              className="card glass-card p-6 sm:p-8 text-center"
             >
-              <div className="w-10 h-10 bg-brand-100 dark:bg-brand-950/50 rounded-2xl flex items-center justify-center mx-auto mb-2.5">
-                <stat.icon className="w-5 h-5 text-brand-500" />
+              <div className="w-12 h-12 bg-[var(--bg-secondary)] dark:bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <stat.icon className="w-6 h-6 text-brand-500" />
               </div>
-              <p className="font-bold text-lg text-[var(--text-primary)]">{stat.value}</p>
-              <p className="text-xs text-[var(--text-muted)] mt-0.5">{stat.label}</p>
+              <p className="font-extrabold text-2xl text-[var(--text-primary)] font-display">{stat.value}</p>
+              <p className="text-sm font-semibold text-[var(--text-muted)] mt-1">{stat.label}</p>
             </motion.div>
           ))}
         </div>

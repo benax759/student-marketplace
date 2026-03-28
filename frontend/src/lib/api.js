@@ -19,10 +19,18 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    // Don't clear credentials or redirect for auth endpoint 401s
+    // (e.g. wrong password on login, validation failure on register)
+    const isAuthEndpoint = error.config?.url?.includes('/auth/login') ||
+      error.config?.url?.includes('/auth/register')
+
+    if (error.response?.status === 401 && !isAuthEndpoint) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
-      if (!window.location.pathname.includes('/login')) {
+      if (
+        !window.location.pathname.includes('/login') &&
+        !window.location.pathname.includes('/register')
+      ) {
         window.location.href = '/login'
       }
     }

@@ -14,16 +14,20 @@ const adminRoutes = require('./routes/admin');
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = process.env.CLIENT_URL
+  ? [process.env.CLIENT_URL]
+  : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'];
+
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
   },
 });
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));

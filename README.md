@@ -367,10 +367,4 @@ MIT — feel free to use this as a starting point for your own campus marketplac
 
 ---
 
-# Made with ❤️ for students everywhere.
-
-# student-marketplace
-
-Where students buy and sell this and many more
-
-> > > > > > > d245f623663727614c97baeebced2fe1714f313a
+Made with ❤️ for students everywhere.

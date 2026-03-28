@@ -52,9 +52,9 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--bg-primary)]/80 backdrop-blur-2xl border-b border-[var(--border-color)]">
-      <div className="page-container">
-        <div className="flex items-center h-16 gap-4">
+    <header className="sticky top-0 z-50 bg-[var(--bg-card)]/80 backdrop-blur-2xl shadow-sm transition-all duration-300">
+      <div className="page-container flex items-center h-16 sm:h-20 gap-4">
+        <div className="flex items-center w-full gap-4">
 
           {/* Mobile: hamburger */}
           <button

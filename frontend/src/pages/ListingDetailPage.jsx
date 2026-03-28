@@ -210,17 +210,17 @@ export default function ListingDetailPage() {
               <div className="flex gap-3">
                 <button
                   onClick={handleWishlist}
-                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border-2 font-semibold transition-all text-sm
+                  className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-full font-bold transition-all text-[15px]
                     ${wishlisted
-                      ? 'border-red-300 bg-red-50 text-red-500 dark:bg-red-950/30 dark:border-red-800'
-                      : 'border-[var(--border-color)] text-[var(--text-secondary)] hover:border-red-300 hover:text-red-500'
+                      ? 'bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400'
+                      : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-red-50 hover:text-red-500 hover:scale-[1.02]'
                     }`}
                 >
                   {wishlisted ? <HiHeart className="w-5 h-5" /> : <HiOutlineHeart className="w-5 h-5" />}
                   {wishlisted ? 'Saved' : 'Save'}
                 </button>
-                <button onClick={handleShare} className="flex-1 btn-ghost flex items-center justify-center gap-2 text-sm border-2 border-[var(--border-color)] py-3 rounded-xl">
-                  <HiOutlineShare className="w-4 h-4" /> Share
+                <button onClick={handleShare} className="flex-1 flex items-center justify-center gap-2 text-[15px] bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-card)] hover:shadow-sm py-3.5 rounded-full font-bold transition-all hover:scale-[1.02]">
+                  <HiOutlineShare className="w-5 h-5" /> Share
                 </button>
               </div>
             </div>
@@ -229,11 +229,11 @@ export default function ListingDetailPage() {
           {/* Owner actions */}
           {isOwner && (
             <div className="flex gap-3">
-              <Link to={`/listing/${listing._id}/edit`} className="flex-1 btn-secondary flex items-center justify-center gap-2">
-                <HiOutlinePencil className="w-4 h-4" /> Edit
+              <Link to={`/listing/${listing._id}/edit`} className="flex-1 btn-secondary flex items-center justify-center gap-2 py-3.5 text-[15px]">
+                <HiOutlinePencil className="w-5 h-5" /> Edit
               </Link>
-              <button onClick={handleDelete} disabled={deleting} className="flex-1 bg-red-50 hover:bg-red-100 dark:bg-red-950/30 dark:hover:bg-red-900/40 text-red-600 border-2 border-red-200 dark:border-red-800 font-semibold py-2.5 rounded-xl transition-all text-sm flex items-center justify-center gap-2">
-                <HiOutlineTrash className="w-4 h-4" /> Delete
+              <button onClick={handleDelete} disabled={deleting} className="flex-1 bg-red-100 hover:bg-red-200 dark:bg-red-900/30 dark:hover:bg-red-900/50 text-red-600 font-bold py-3.5 rounded-full transition-all hover:scale-[1.02] text-[15px] flex items-center justify-center gap-2">
+                <HiOutlineTrash className="w-5 h-5" /> Delete
               </button>
             </div>
           )}
